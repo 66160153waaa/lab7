@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>eg2</title>
+    </head>
+    <body>
+        <input type="text" id="nameInput" placeholder="Input Name" />
+        <button onclick="greetUser()">Hello</button>
+        <p id="greeting"></p>
+
+        <script>
+            function greetUser() {
+                
+                let name = document.getElementById("nameInput").value;
+
+                if (name) {
+                    document.getElementById("greeting").textContent = "Hello " + name;
+                } else {
+                    alert("Please input name fisrt");
+                }
+            }
+        </script>
+    </body>
+</html>
