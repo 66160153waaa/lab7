@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>eg7</title>
+    </head>
+    <body>
+        <h3>ข้อมูลนักเรียน</h3>
+        <button onclick="showStudentInfo()">แสดงข้อมูล</button>
+        <div id="StudentInfo"></div>
+
+        <script>
+            const student = {
+                name: "วาดี้สุดหล่อ",
+                age: "12",
+                grade: "1",
+                scores: {
+                    math: 0,
+                    science: 0,
+                    english: 100,
+                },
+            };
+
+            function showStudentInfo() {
+                let info = document.getElementById("StudentInfo");
+                info.innerHTML = `
+                                Name: ${student.name}<br>
+                                Age: ${student.age}<br>
+                                Grade: ${student.grade}<br>
+                                Point:<br>
+                                - Math ${student.scores.math}<br>
+                                - Science ${student.scores.science}<br>
+                                - English ${student.scores.english}<br>
+                                `;
+            }
+        </script>
+    </body>
+</html>
