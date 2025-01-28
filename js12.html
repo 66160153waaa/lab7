@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width", initial-scale="1.0" />
+        <title>eg12</title>
+    </head>
+    <body>
+        <div id="example12">
+            <h3>12. ตัวนับจำนวนคลิก</h3>
+            <button onclick="incrementCounter()">Ckick Here</button>
+            <p>จำนวนคลิก: <span id="counter">0</span></p>
+
+            <script>
+                
+                let clickCount = 0;
+
+                function incrementCounter() {
+                    clickCount++;
+                    document.getElementById("counter").textContent = clickCount;
+                }
+            </script>
+    </body>
+</html>
