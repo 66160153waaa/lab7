@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>eg4</title>
+    </head>
+    <body>
+        <h3>Goods List</h3>
+        <button onclick="showProducts()">Show Goods List</button>
+        <ul id="ProductList"></ul>
+
+        <script>
+            function showProducts() {
+                const product = ["apple","banana","orange","mango"];
+                let ProductList = document.getElementById("ProductList");
+                ProductList.innerHTML = "";
+
+                for (let i = 0; i < product.length; i++) {
+                    let li = document.createElement("li");
+                    li.textContent = product[i];
+                    ProductList.appendChild(li);
+                }
+            }
+        </script>
+    </body>
+</html>
