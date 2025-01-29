@@ -8,44 +8,89 @@
                 height: 300px;
                 border: 1px solid black;
                 position: relative;
+                display: none;
             }
             #target {
                 width: 30px;
-                height:30px;
+                height: 30px;
                 background-color: red;
                 position: absolute;
                 cursor: pointer;
             }
+            #message {
+                font-size: 24px;
+                color: red;
+                display: none;
+            }
         </style>
     </head>
     <body>
-        <body>
-            <h3>เกมคลิกเป้าหมาย</h3>
-            <p>คะแนน: <span id="score">0</span></p>
-            <div id="gameArea">
-                <div id="target" onclick="hitTarget()"></div>
-            </div>
+        <h3>เกมคลิกเป้าหมาย</h3>
+        <p>คะแนน: <span id="score">0</span></p>
+        <p id="timer">เวลา: 30 วินาที</p>
+        <div id="gameArea">
+            <div id="target" onclick="hitTarget()"></div>
+        </div>
+        <p id="message">Over</p>
+        <button id="startBtn" onclick="startGame()">Start</button>
+        <button id="resetBtn" onclick="resetGame()" style="display: none;">Reset</button>
 
-            <script>
-                let score = 0;
+        <script>
+            let score = 0;
+            let countdown;
+            let timeLeft = 30;
 
-                function hitTarget() {
-                    score++;
-                    document.getElementById("score").textContent = score;
+            function hitTarget() {
+                score++;
+                document.getElementById("score").textContent = score;
 
-                    let gameArea = document.getElementById("gameArea");
-                    let target = document.getElementById("target");
+                let gameArea = document.getElementById("gameArea");
+                let target = document.getElementById("target");
 
-                    let maxX = gameArea.offsetWidth - target.offsetWidth;
-                    let maxY = gameArea.offsetHeight - target.offsetHeight;
+                let maxX = gameArea.offsetWidth - target.offsetWidth;
+                let maxY = gameArea.offsetHeight - target.offsetHeight;
 
-                    let newX = Math.floor(Math.random() * maxX);
-                    let newY = Math.floor(Math.random() * maxY);
+                let newX = Math.floor(Math.random() * maxX);
+                let newY = Math.floor(Math.random() * maxY);
 
-                    target.style.left = newX + "px";
-                    target.style.top = newY + "px";
-                }
-            </script>
-        </body>
+                target.style.left = newX + "px";
+                target.style.top = newY + "px";
+            }
+
+            function startGame() {
+                document.getElementById("startBtn").style.display = "none";
+                document.getElementById("resetBtn").style.display = "none";
+                document.getElementById("gameArea").style.display = "block";
+                document.getElementById("message").style.display = "none";
+                timeLeft = 30;
+                score = 0;
+                document.getElementById("score").textContent = score;
+                document.getElementById("timer").textContent = `เวลา: ${timeLeft} วินาที`;
+                
+                countdown = setInterval(() => {
+                    timeLeft--;
+                    document.getElementById("timer").textContent = `เวลา: ${timeLeft} วินาที`;
+
+                    if (timeLeft <= 0) {
+                        clearInterval(countdown);
+                        endGame();
+                    }
+                }, 1000);
+            }
+
+            function endGame() {
+                document.getElementById("gameArea").style.display = "none";
+                document.getElementById("message").style.display = "block";
+                document.getElementById("startBtn").style.display = "inline";
+                document.getElementById("resetBtn").style.display = "inline";
+            }
+
+            function resetGame() {
+                score = 0;
+                document.getElementById("score").textContent = score;
+                document.getElementById("timer").textContent = "เวลา: 30 วินาที";
+                document.getElementById("message").style.display = "none";
+            }
+        </script>
     </body>
 </html>
