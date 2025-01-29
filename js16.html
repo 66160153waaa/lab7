@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>eg16</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div id="example16">
+            <h3>16. Picture Slide Show</h3>
+            <div>
+                <img id="slideImage" src="https://www.irishtimes.com/resizer/v2/FR6UBRVY2ZB7ZGMJDWIYRYN4TY.jpg?auth=55b7c97bb8c514783f80cb8d2ada2589e96058686e5b7879bf51e59829002935&smart=true&width=1600&height=1600" alt="slideshow" />
+            </div>
+            <button onclick="changeSlide(-1)">Prevouse</button>
+            <button onclick="changeSlide(1)">Next</button>
+        </div>
+
+        <style>
+            .slide {
+                text-align: center;
+            }
+            .slideshow img {
+                max-width: 400px;
+                height: 300px;
+                margin: 10px;
+            }
+        </style>
+
+        <script>
+            const images = [
+                "https://assets-fr.imgfoot.com/media/cache/1200x1200/lamine-yamal-2324-tj.jpg",
+                "https://i.guim.co.uk/img/media/949dd0da169b604bc4e98a15c00d067845948ce4/0_206_6724_4035/master/6724.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=ad2b8cdb50ec3ed61c2c25b2d6d4fd84",
+                "https://s.yimg.com/ny/api/res/1.2/xhP1vArm0nnLNZFsTIWC5A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQ1Mw--/https://media.zenfs.com/en/onefootball_articles_802/77eaf1c97f3dc9e51dfabf99b9c4725b",
+            ];
+            let currentSlide = 0;
+
+            function changeSlide(direction) {
+                currentSlide =
+                (currentSlide + direction +images.length) % images.length;
+                document.getElementById("slideImage").src = images[currentSlide];
+            }
+        </script>
+    </body>
+</html>
