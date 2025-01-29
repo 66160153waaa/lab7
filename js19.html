@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>eg18</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div id="example19">
+            <h3>19. Data Tab</h3>
+            <div class="tabs">
+                <button class="tab-button" onclick="showTab(0)">Tab 1</button>
+                <button class="tab-button" onclick="showTab(1)">Tab 2</button>
+                <button class="tab-button" onclick="showTab(2)">Tab 3</button>
+
+                <div class="tab-content">Tab content 1</div>
+                <div class="tab-content">Tab content 2</div>
+                <div class="tab-content">Tab content 3</div>
+            </div>
+
+            <style>
+                .tabs {
+                    margin: 20px;
+                }
+                .tab-content {
+                    display: none;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                }
+                .tab-content.active {
+                    display: block;
+                }
+                .tab-button {
+                    margin-right: 5px;
+                }
+                .tab-button.active {
+                    background-color: #ddd;
+                }
+            </style>
+
+            <script>
+                function showTab(tabIndex) {
+                    const contents = document.getElementsByClassName("tab-content");
+                    const buttons = document.getElementsByClassName("tab-button");
+
+                    for (let i = 0; i < contents.length; i++) {
+                        contents[i].style.display = "none";
+                        buttons[i].classList.remove("active");
+                    }
+
+                    contents[tabIndex].style.display = "block";
+                    buttons[tabIndex].classList.add("active");
+
+                }
+                showTab(0);
+            </script>
+        </div>
+    </body>
+</html>
